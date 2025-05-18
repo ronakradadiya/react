@@ -1,52 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child1" },
-    React.createElement("div", { id: "child2" }, "I am child 2")
+// React Element
+const heading = <h1>Hello, React!</h1>
+
+// React Functional Component
+const Title = () => {
+  return (
+    <h1 id="title" className="title">React Functional Component</h1>
   )
-);
+}
 
-const siblings = React.createElement(
-  "div",
-  { id: "siblings" },
-  React.createElement("div", { id: "sibling1" }, "I am sibling 1"),
-  React.createElement("div", { id: "sibling2" }, "I am sibling 2")
-);
-
-const complexParent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child1" },
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h2", {}, "I am h2 tag")
-  ),
-  React.createElement(
-    "div",
-    { id: "child2" },
-    [
-      React.createElement("h1", { key: "h1-1" }, "I am h1 tag"),
-      React.createElement("h2", { key: "h2-1" }, "I am h2 tag")
-    ]
+// Component Composition
+const HeadingComponent = () => {
+  return (
+    <div id="container">
+      <h1 className="heading">Hello, React!</h1>
+      <Title />
+    </div>
   )
-);
-
-const heading = React.createElement(
-  "div",
-  {
-    id: "heading",
-  }, // props
-  "Hello, React!" // children
-);
+}
 
 console.log(heading); // Object representation of the React element
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement); // Create a root for rendering
-root.render(complexParent); // Render the React element to the DOM - it converts to HTML and displays it on the webpage
+root.render(<HeadingComponent />); // Render the React element to the DOM - it converts to HTML and displays it on the webpage
