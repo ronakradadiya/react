@@ -1,18 +1,27 @@
-import React from 'react'
+import UserClass from "./UserClass";
+import { Component } from "react";
 
-const About = () => {
-  const user = null; // Simulating missing data
-  
-  if (!user) {
-    throw new Error("User data is missing in About Page!");
+class About extends Component {
+  constructor(props) {
+    super(props);
+
+    // console.log("Parent Constructor");
   }
-  
-  return (
-    <div>
-      <h1>About Us</h1>
-      <p>This is the About page of our application.</p>
-    </div>
-  )
+
+  componentDidMount() {
+    // console.log("Parent Component Did Mount");
+  }
+
+  render() {
+    // console.log("Parent Render");
+    return (
+      <div>
+        <h1>About Class Component</h1>
+        <h2>This is Namaste React Web Series</h2>
+        <UserClass name={"First"} location={"Mumbai"} />
+      </div>
+    );
+  }
 }
 
-export default About
+export default About;
