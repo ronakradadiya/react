@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  console.log('RestaurantCard Rendered', props);
+  console.log("RestaurantCard Rendered", props);
 
   const {
     cloudinaryImageId,
@@ -12,7 +12,7 @@ const RestaurantCard = (props) => {
     cuisines,
     costForTwo,
     sla,
-    deliveryTime
+    deliveryTime,
   } = resData?.info;
 
   return (
@@ -29,6 +29,23 @@ const RestaurantCard = (props) => {
       <h4>{sla?.slaString}</h4>
     </div>
   );
+};
+
+// Higher Order Component
+
+// input - RestaurantCard =>> RestaurantCardPromoted
+
+export const withPromtedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
